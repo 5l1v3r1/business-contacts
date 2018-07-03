@@ -1,4 +1,3 @@
-<!-- <button class="btn btn-primary" (click)="getBusinesses()">Fetch</button> -->
 <div class="top-bar">
     <div class="row">
         <div class="top-bar-left">
@@ -19,8 +18,8 @@
             <button class="button alert" (click)="changeState('default')">Go Back</button>
         </div>
     </div>
-    <div *ngFor="let business of businesses">
-        <div *ngIf="business.$key == activeKey">
+    <div *ngFor="let business of businesses; let i = index">
+        <div *ngIf="i === activeKey">
             <div class="row">
                 <div class="large-5 columns large-offset-1">
                     <h3>{{business.company}}</h3>
@@ -58,13 +57,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let business of businesses">
+                    <tr *ngFor="let business of businesses; let i = index">
                         <td>{{business.company}}</td>
                         <td>{{business.category}}</td>
                         <td>{{business.phone}}</td>
                         <td></td>
                         <td>
-                            <button #id (click)="changeState('extend', business.$key)" class="button">More</button>
+                            <button (click)="changeState('extend', i)" class="button">More</button>
                             <button class="button secondary">Edit</button>
                             <button class="button alert">Delete</button>
                         </td>
@@ -75,7 +74,3 @@
     </div>
 </div>
 <p align="center" *ngIf="loader">Loading stuff...</p>
-
-
-KEYS: {{businessKeys}}
-<br> WHAT IS RETURNED: {{businesses}}
