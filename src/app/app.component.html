@@ -11,6 +11,22 @@
     </div>
 </div>
 <br>
+<p align="center" *ngIf="loader">Loading stuff...</p>
+
+<div *ngIf="appState === 'default'" class="row">
+    <div class="large-6 columns">
+        <button class="button" (click)="changeState('add')">Add Business</button>
+    </div>
+    <div class="large-6 columns">
+        <label for="filter">Filter Category
+    <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
+      <option value="0">Select one</option>
+      <option *ngFor="let category of categories"  value="{{category.name}}">{{category.name}}</option>
+    </select>
+    </label>
+    </div>
+</div>
+
 
 <div *ngIf="appState === 'extend'">
     <div class="row">
@@ -73,4 +89,3 @@
         </div>
     </div>
 </div>
-<p align="center" *ngIf="loader">Loading stuff...</p>

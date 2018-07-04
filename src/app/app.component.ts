@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   activeKey: any;
   appState: any;
   // objectKeys = Object.keys;
+  filteredCategory: any;
 
   constructor(private fb: AngularFirestore) {
    console.log('constructor ran');
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
    console.log('oninit ran');
 
    this.loader = true;
-
+    this.appState = 'default';
       this.fb.collection('/businesses').valueChanges()
       .subscribe(items => {
         this.businesses = items;
@@ -66,5 +67,7 @@ export class AppComponent implements OnInit {
       console.log('state: ' + state);
 
     }
+
+    filterCategory() {}
 
 }
