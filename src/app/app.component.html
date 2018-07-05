@@ -19,9 +19,9 @@
     </div>
     <div class="large-6 columns">
         <label for="filter">Filter Category
-    <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
+     <select (change)="filterCategory(filteredCategory.value)"  #filteredCategory>
       <option value="0">Select one</option>
-      <option *ngFor="let category of categories"  value="{{category.name}}">{{category.name}}</option>
+      <option *ngFor="let category of categories | async"  value="{{category.name}}">{{category.name}}</option>
     </select>
     </label>
     </div>
@@ -29,12 +29,13 @@
 
 
 <div *ngIf="appState === 'extend'">
+    Appstate = {{appState}}, ActiveKey = {{activeKey}}
     <div class="row">
         <div class="large-12 large-1-offset columns">
             <button class="button alert" (click)="changeState('default')">Go Back</button>
         </div>
     </div>
-    <div *ngFor="let business of businesses; let i = index">
+    <div *ngFor="let business of businesses | async; let i = index">
         <div *ngIf="i === activeKey">
             <div class="row">
                 <div class="large-5 columns large-offset-1">
@@ -73,7 +74,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let business of businesses; let i = index">
+                    <tr *ngFor="let business of businesses | async; let i = index">
                         <td>{{business.company}}</td>
                         <td>{{business.category}}</td>
                         <td>{{business.phone}}</td>

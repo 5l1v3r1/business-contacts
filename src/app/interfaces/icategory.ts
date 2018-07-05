@@ -1,4 +1,4 @@
 export interface Icategory {
-  key: string;
+  // key: string;
   name: string;
 }

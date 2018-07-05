@@ -1,5 +1,5 @@
 export interface Ibusiness {
-  key: string;
+  // key: string;
   company?: string;
   description?: string;
   category?: string;
